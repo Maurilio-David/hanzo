@@ -1,14 +1,77 @@
+# Flutter specific
+*.lock
+.idea/
+.packages
+.pub-cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+.dart_tool/
+.flutter/
+build/
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+packages/
+.svn/
+*.dart.js
+*.dart.js.map
+*.dart.css
+*.dart.html
+
+# Android specific
+*.iml
+.gradle/
+build/
+*/local.properties
+*/out/
+*/captures/
+*.keystore
+.gradle
+*/release/
+*/bundle/
+*.hprof
+*/local.properties
+*/.externalNativeBuild
+*/build
+*/.gradle
+*/.idea/libraries
+*/.idea/misc.xml
+*/.idea/modules.xml
+*/.idea/workspace.xml
+*/.idea/codeStyles/Project.xml
+*/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+
+# Firebase specific
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json
+
 # Miscellaneous
 *.class
 *.log
 *.pyc
 *.swp
 .DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
+*.swp
+*.swo
+profile
+*.DS_Store
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+*.swp
+*.swo
+profile
+.*.swp
+!pubspec.lock
+*.yaml
+**/.*.swp
+!.gitignore
+!.gitattributes
 
 # IntelliJ related
 *.iml
@@ -16,28 +79,5 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
-
-# Symbolication related
-app.*.symbols
-
-# Obfuscation related
-app.*.map.json
-
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# VSCode related
+.vscode/

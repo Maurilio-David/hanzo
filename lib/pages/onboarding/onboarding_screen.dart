@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'widget/card_widget.dart';
+import '../pages.dart';
 
-import '../consts/consts.dart';
-import '../theme/theme.dart';
+import '../../consts/consts.dart';
+import '../../theme/theme.dart';
 
 class OnboardingScreen extends StatelessWidget {
+  const OnboardingScreen({super.key});
+
   Future<void> _completeOnboarding(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('onboardingComplete', true);
-    Navigator.pushReplacementNamed(context, '/login');
+    Navigator.pushReplacementNamed(context, '/singIn');
   }
 
   @override
@@ -71,24 +73,10 @@ class OnboardingScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryColor,
-                          foregroundColor: secondaryColor,
-                          elevation: 0,
-                        ),
+                      Cbutton(
+                        text: Strings.conclude,
                         onPressed: () => _completeOnboarding(context),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              Strings.conclude,
-                              style: AppTextStyle.subTitleH1
-                                  .copyWith(fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ),
+                      )
                     ],
                   ),
                 ),
