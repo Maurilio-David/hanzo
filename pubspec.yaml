@@ -17,6 +17,7 @@ dependencies:
   dio: ^5.5.0+1
   shimmer: ^3.0.0
   cloud_firestore: ^5.2.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +26,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   
+  assets:
+    - lib/assets/images/logo-hanzo.svg
