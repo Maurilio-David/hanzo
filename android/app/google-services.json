@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1039597476675",
+    "project_id": "hanzo-d6354",
+    "storage_bucket": "hanzo-d6354.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039597476675:android:3ce3707e82fd626d226df6",
+        "android_client_info": {
+          "package_name": "com.maurilio.hanzo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYW242mwIYljW9uU1oukzLbiNEIZL0DYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
