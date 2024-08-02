@@ -8,4 +8,12 @@ class Strings {
       'Após se cadastrar e efetuar o login você já terá acesso a nossa lista de filmes com os principais destaques, caso você queira buscar por um filme específico poderá digitar no campo de busca';
   static String next = 'Proxímo';
   static String conclude = 'Concluir';
+  static String enter = 'Entrar';
+  static String enterWithGoogle = 'Entrar com Google';
+  static String register = 'Registrar';
+  static String registerMsg = 'Ainda não tem uma conta? Crie sua conta';
+  static String name = 'Nome';
+  static String email = 'Email';
+  static String password = 'Senha';
+  static String confirmPassword = 'Confirmar Senha';
 }

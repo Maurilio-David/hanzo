@@ -13,6 +13,10 @@ class AppRouter {
         return MaterialPageRoute<SinginScreen>(
           builder: (ctx) => SinginScreen(),
         );
+      case '/register':
+        return MaterialPageRoute<RegisterScreen>(
+          builder: (ctx) => RegisterScreen(),
+        );
       default:
         return MaterialPageRoute<OnboardingScreen>(
           builder: (ctx) => const OnboardingScreen(),
