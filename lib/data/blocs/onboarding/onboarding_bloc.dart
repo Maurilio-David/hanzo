@@ -10,7 +10,6 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     completedOnboarding() async {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('onboardingComplete', true);
-      print('chamou');
     }
 
     on<ControllerPage>((event, emit) {
