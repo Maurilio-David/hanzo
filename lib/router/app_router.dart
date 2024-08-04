@@ -7,8 +7,7 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute<OnboardingScreen>(
-          builder: (ctx) => const OnboardingScreen(),
-        );
+            builder: (ctx) => const OnboardingScreen());
       case '/singIn':
         return MaterialPageRoute<SinginScreen>(
           builder: (ctx) => SinginScreen(),

@@ -3,17 +3,25 @@ import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 
 class Cbutton extends StatelessWidget {
-  const Cbutton({super.key, required this.text, required this.onPressed});
+  const Cbutton(
+      {super.key,
+      required this.text,
+      required this.onPressed,
+      this.secondButton = false});
 
   final String text;
   final VoidCallback? onPressed;
+  final bool secondButton;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: primaryColor,
-        foregroundColor: secondaryColor,
+        backgroundColor: secondButton ? secondaryColor : primaryColor,
+        side: BorderSide(
+          width: 1,
+          color: secondButton ? primaryColor : secondaryColor,
+        ),
         elevation: 0,
       ),
       onPressed: onPressed,
@@ -22,7 +30,9 @@ class Cbutton extends StatelessWidget {
         children: [
           Text(
             text,
-            style: AppTextStyle.subTitleH1.copyWith(fontSize: 16),
+            style: AppTextStyle.subTitleH1
+                .copyWith(fontSize: 16)
+                .copyWith(color: secondButton ? primaryColor : secondaryColor),
           ),
         ],
       ),

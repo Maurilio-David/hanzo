@@ -6,7 +6,8 @@ class Strings {
       'Caso seja seu primeiro acesso, na próxima tela você deverá realizar seu cadastro na plataforma, mas se você já possui cadastro é só efetuar o login';
   static String instructionTwo =
       'Após se cadastrar e efetuar o login você já terá acesso a nossa lista de filmes com os principais destaques, caso você queira buscar por um filme específico poderá digitar no campo de busca';
-  static String next = 'Proxímo';
+  static String next = 'Próximo';
+  static String previous = 'Anterior';
   static String conclude = 'Concluir';
   static String enter = 'Entrar';
   static String enterWithGoogle = 'Entrar com Google';
