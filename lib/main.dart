@@ -51,6 +51,9 @@ class MyApp extends StatelessWidget {
                 BlocProvider(
                   create: (context) => OnboardingBloc(),
                 ),
+                BlocProvider(
+                  create: (context) => AuthBloc(),
+                ),
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,

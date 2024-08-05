@@ -14,7 +14,7 @@ class AppRouter {
         );
       case '/register':
         return MaterialPageRoute<RegisterScreen>(
-          builder: (ctx) => RegisterScreen(),
+          builder: (ctx) => const RegisterScreen(),
         );
       default:
         return MaterialPageRoute<OnboardingScreen>(

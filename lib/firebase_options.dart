@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1039597476675',
     projectId: 'hanzo-d6354',
     storageBucket: 'hanzo-d6354.appspot.com',
+    iosClientId: '1039597476675-ts94ucqpmkea41am3ek43ttvegl0b8gm.apps.googleusercontent.com',
     iosBundleId: 'com.maurilio.hanzo',
   );
 

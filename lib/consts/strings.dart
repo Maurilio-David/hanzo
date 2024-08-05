@@ -17,4 +17,8 @@ class Strings {
   static String email = 'Email';
   static String password = 'Senha';
   static String confirmPassword = 'Confirmar Senha';
+  static String loading = 'Carregando';
+  static String successfullyRegistered = 'Registrado com Sucesso';
+  static String backToLogin = 'Voltar para tela de login';
+  static String resgiteredError = 'Ocorreu um erro';
 }
