@@ -16,223 +16,233 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-        return Scaffold(
-          body: Container(
-            color: primaryColor,
-            child: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  sliver: SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (state is InitialState) ...[
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Stack(
-                              children: [
-                                Form(
-                                  key: context.read<AuthBloc>().registerKey,
-                                  child: Column(
-                                    children: [
-                                      SvgPicture.asset(
-                                        Assets.logo,
-                                      ),
-                                      const SizedBox(height: 16),
-                                      CustomTextForm(
-                                        controller: context
-                                            .read<AuthBloc>()
-                                            .emailController,
-                                        hint: Strings.email,
-                                        validator: validateEmail,
-                                      ),
-                                      CustomTextForm(
-                                        controller: context
-                                            .read<AuthBloc>()
-                                            .nameController,
-                                        hint: Strings.name,
-                                        validator: validateNotBlankAndNoNumbers,
-                                      ),
-                                      CustomTextForm(
-                                        controller: context
-                                            .read<AuthBloc>()
-                                            .passwordController,
-                                        hint: Strings.password,
-                                        obscure: true,
-                                        validator: validatePassword,
-                                      ),
-                                      CustomTextForm(
-                                        controller: context
-                                            .read<AuthBloc>()
-                                            .confirmPasswordController,
-                                        hint: Strings.confirmPassword,
-                                        obscure: true,
-                                        validator: (value) =>
-                                            validateConfirmPassword(
-                                                value,
-                                                context
-                                                    .read<AuthBloc>()
-                                                    .passwordController
-                                                    .text),
-                                      ),
-                                      const SizedBox(height: 16),
-                                      CustomButton(
-                                        onPressed: () {
-                                          if (context
+      child: PopScope(
+        canPop: true,
+        onPopInvoked: (didPop) {
+          context.read<AuthBloc>().add(
+                const Clean(),
+              );
+          return;
+        },
+        child: BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+          return Scaffold(
+            body: Container(
+              color: primaryColor,
+              child: CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    sliver: SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (state is InitialState) ...[
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Form(
+                                    key: context.read<AuthBloc>().registerKey,
+                                    child: Column(
+                                      children: [
+                                        SvgPicture.asset(
+                                          Assets.logo,
+                                        ),
+                                        const SizedBox(height: 16),
+                                        CustomTextForm(
+                                          controller: context
                                               .read<AuthBloc>()
-                                              .registerKey
-                                              .currentState!
-                                              .validate()) {
-                                            context.read<AuthBloc>().add(
-                                                  const Register(),
-                                                );
-                                          }
-                                        },
-                                        text: Strings.register,
-                                      ),
-                                      const SizedBox(height: 16),
-                                    ],
-                                  ),
-                                ),
-                                Positioned(
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            color: primaryColor,
-                                            borderRadius:
-                                                BorderRadius.circular(50)),
-                                        child: IconButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            icon: Icon(
-                                              Icons.arrow_back,
-                                              color: secondaryColor,
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ] else if (state is LoadingState) ...[
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: secondaryColor,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: CircularProgressIndicator(
-                                    color: primaryColor,
-                                  ),
-                                ),
-                                CardWidget(
-                                  color: transparent,
-                                  subtitle: Strings.loading,
-                                  subTitleColor: primaryColor,
-                                ),
-                              ],
-                            ),
-                          )
-                        ] else if (state is LoggedState) ...[
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: secondaryColor,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      color: primaryColor,
-                                      borderRadius: BorderRadius.circular(50),
+                                              .emailController,
+                                          hint: Strings.email,
+                                          validator: validateEmail,
+                                        ),
+                                        CustomTextForm(
+                                          controller: context
+                                              .read<AuthBloc>()
+                                              .nameController,
+                                          hint: Strings.name,
+                                          validator:
+                                              validateNotBlankAndNoNumbers,
+                                        ),
+                                        CustomTextForm(
+                                          controller: context
+                                              .read<AuthBloc>()
+                                              .passwordController,
+                                          hint: Strings.password,
+                                          obscure: true,
+                                          validator: validatePassword,
+                                        ),
+                                        CustomTextForm(
+                                          controller: context
+                                              .read<AuthBloc>()
+                                              .confirmPasswordController,
+                                          hint: Strings.confirmPassword,
+                                          obscure: true,
+                                          validator: (value) =>
+                                              validateConfirmPassword(
+                                                  value,
+                                                  context
+                                                      .read<AuthBloc>()
+                                                      .passwordController
+                                                      .text),
+                                        ),
+                                        const SizedBox(height: 16),
+                                        CustomButton(
+                                          onPressed: () {
+                                            if (context
+                                                .read<AuthBloc>()
+                                                .registerKey
+                                                .currentState!
+                                                .validate()) {
+                                              context.read<AuthBloc>().add(
+                                                    const Register(),
+                                                  );
+                                            }
+                                          },
+                                          text: Strings.register,
+                                        ),
+                                        const SizedBox(height: 16),
+                                      ],
                                     ),
-                                    child: Icon(
-                                      Icons.check,
-                                      color: secondaryColor,
-                                      size: 40,
-                                    )),
-                                CardWidget(
-                                  color: transparent,
-                                  subtitle: Strings.successfullyRegistered,
-                                  subTitleColor: primaryColor,
-                                ),
-                                CustomButton(
-                                    text: Strings.backToLogin,
-                                    onPressed: () {
-                                      context.read<AuthBloc>().add(
-                                            const Back(),
-                                          );
-                                      Navigator.pop(context);
-                                    })
-                              ],
-                            ),
-                          )
-                        ] else if (state is ErrorState) ...[
-                          Container(
-                            padding: const EdgeInsets.all(16),
-                            decoration: BoxDecoration(
-                              color: secondaryColor,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      color: primaryColor,
-                                      borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  Positioned(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: primaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(50)),
+                                          child: IconButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              icon: Icon(
+                                                Icons.arrow_back,
+                                                color: secondaryColor,
+                                              )),
+                                        ),
+                                      ],
                                     ),
-                                    child: Icon(
-                                      Icons.close,
-                                      color: secondaryColor,
-                                      size: 40,
-                                    )),
-                                CardWidget(
-                                  color: transparent,
-                                  subtitle: Strings.resgiteredError,
-                                  subTitleColor: primaryColor,
-                                ),
-                                CustomButton(
-                                    text: Strings.backToLogin,
-                                    onPressed: () {
-                                      context.read<AuthBloc>().add(
-                                            const Back(),
-                                          );
-                                      Navigator.pop(context);
-                                    })
-                              ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
+                          ] else if (state is LoadingState) ...[
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: secondaryColor,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Center(
+                                    child: CircularProgressIndicator(
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                  CardWidget(
+                                    color: transparent,
+                                    subtitle: Strings.loading,
+                                    subTitleColor: primaryColor,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ] else if (state is LoggedState) ...[
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: secondaryColor,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: primaryColor,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Icon(
+                                        Icons.check,
+                                        color: secondaryColor,
+                                        size: 40,
+                                      )),
+                                  CardWidget(
+                                    color: transparent,
+                                    subtitle: Strings.successfullyRegistered,
+                                    subTitleColor: primaryColor,
+                                  ),
+                                  CustomButton(
+                                      text: Strings.backToLogin,
+                                      onPressed: () {
+                                        context.read<AuthBloc>().add(
+                                              const Back(),
+                                            );
+                                        Navigator.pop(context);
+                                      })
+                                ],
+                              ),
+                            )
+                          ] else if (state is ErrorState) ...[
+                            Container(
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: secondaryColor,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: primaryColor,
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Icon(
+                                        Icons.close,
+                                        color: secondaryColor,
+                                        size: 40,
+                                      )),
+                                  CardWidget(
+                                    color: transparent,
+                                    subtitle: Strings.resgiteredError,
+                                    subTitleColor: primaryColor,
+                                  ),
+                                  CustomButton(
+                                      text: Strings.backToLogin,
+                                      onPressed: () {
+                                        context.read<AuthBloc>().add(
+                                              const Back(),
+                                            );
+                                        Navigator.pop(context);
+                                      })
+                                ],
+                              ),
+                            )
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 }

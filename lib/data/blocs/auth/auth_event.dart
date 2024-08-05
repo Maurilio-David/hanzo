@@ -17,6 +17,14 @@ class Register extends AuthEvent {
   const Register();
 }
 
+class Login extends AuthEvent {
+  const Login();
+}
+
 class Back extends AuthEvent {
   const Back();
+}
+
+class Clean extends AuthEvent {
+  const Clean();
 }

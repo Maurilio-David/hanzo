@@ -17,7 +17,7 @@ class AuthRepostitory {
       }
       return e.code;
     }
-    return null;
+    return 'success';
   }
 
   Future<String?> register(
@@ -28,7 +28,7 @@ class AuthRepostitory {
       UserCredential userCredential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
       await userCredential.user!.updateDisplayName(name);
-      return 'sucess';
+      return 'success';
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'email-already-in-use':
