@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hanzo/data/repositories/repositories.dart';
 import 'package:hanzo/theme/app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'data/blocs/blocs.dart';
@@ -53,6 +54,9 @@ class MyApp extends StatelessWidget {
                 ),
                 BlocProvider(
                   create: (context) => AuthBloc(),
+                ),
+                BlocProvider(
+                  create: (context) => HomeBloc(HomeRepository()),
                 ),
               ],
               child: MaterialApp(
