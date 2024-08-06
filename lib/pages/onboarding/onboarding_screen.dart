@@ -132,7 +132,7 @@ class OnboardingScreen extends StatelessWidget {
                                         CompletedOnboarding(),
                                       );
                                   Navigator.pushReplacementNamed(
-                                      context, '/singIn');
+                                      context, AppRoutes.signinRoute);
                                 }
                               : () => context.read<OnboardingBloc>().add(
                                     ControllerPage(page: state.page + 1),

@@ -5,3 +5,4 @@ Color secondaryColor = Colors.white;
 Color darkColor = Colors.black;
 Color transparent = Colors.transparent;
 Color green = Colors.green;
+Color errorColor = Colors.red;

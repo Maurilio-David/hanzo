@@ -64,7 +64,7 @@ class SinginScreen extends StatelessWidget {
                                   const SizedBox(height: 16),
                                   if (state is! LoadingState) ...[
                                     CustomButton(
-                                      onPressed: () {
+                                      onPressed: () async {
                                         if (context
                                             .read<AuthBloc>()
                                             .signinKey
@@ -74,10 +74,14 @@ class SinginScreen extends StatelessWidget {
                                               .read<AuthBloc>()
                                               .add(const Login());
 
-                                          if (context.read<AuthBloc>().logged) {
+                                          bool logged = await context
+                                              .read<AuthBloc>()
+                                              .getUserLogged();
+
+                                          if (logged && context.mounted) {
                                             Navigator.of(context)
                                                 .pushNamedAndRemoveUntil(
-                                                    '/home',
+                                                    AppRoutes.homeRoute,
                                                     (Route<dynamic> route) =>
                                                         false);
                                           }
@@ -95,7 +99,7 @@ class SinginScreen extends StatelessWidget {
                                   ] else if (state is ErrorState) ...[
                                     CardWidget(
                                       color: transparent,
-                                      subtitle: Strings.resgiteredError,
+                                      subtitle: Strings.errorTryAgain,
                                       subTitleColor: primaryColor,
                                     ),
                                   ],
@@ -109,7 +113,7 @@ class SinginScreen extends StatelessWidget {
                                             .read<AuthBloc>()
                                             .add(const Clean());
                                         Navigator.pushNamed(
-                                            context, '/register');
+                                            context, AppRoutes.registerRoute);
                                       },
                                       child: Text(Strings.registerMsg),
                                     ),

@@ -218,7 +218,7 @@ class RegisterScreen extends StatelessWidget {
                                       )),
                                   CardWidget(
                                     color: transparent,
-                                    subtitle: Strings.resgiteredError,
+                                    subtitle: Strings.errorTryAgain,
                                     subTitleColor: primaryColor,
                                   ),
                                   CustomButton(

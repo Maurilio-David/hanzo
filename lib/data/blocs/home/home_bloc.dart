@@ -10,7 +10,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeRepository _repository;
   List<Movie> list = [];
 
-  HomeBloc(this._repository) : super(HomeInitialState()) {
+  HomeBloc(this._repository) : super(HomeLoadingState()) {
     on<GetMovies>(_onGetMovies);
   }
 

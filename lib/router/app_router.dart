@@ -8,7 +8,7 @@ class AppRouter {
       case '/':
         return MaterialPageRoute<OnboardingScreen>(
             builder: (ctx) => const OnboardingScreen());
-      case '/singIn':
+      case '/signin':
         return MaterialPageRoute<SinginScreen>(
           builder: (ctx) => const SinginScreen(),
         );

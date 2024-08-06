@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hanzo/data/repositories/repositories.dart';
 import 'package:hanzo/theme/app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'consts/consts.dart';
 import 'data/blocs/blocs.dart';
 import 'firebase_options.dart';
 import 'router/app_router.dart';
@@ -67,7 +68,9 @@ class MyApp extends StatelessWidget {
                       ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                   useMaterial3: true,
                 ),
-                initialRoute: showOnboarding ? '/' : '/singIn',
+                initialRoute: showOnboarding
+                    ? AppRoutes.initialRoute
+                    : AppRoutes.signinRoute,
                 onGenerateRoute: appRouter.onGenerateRoute,
               ),
             );

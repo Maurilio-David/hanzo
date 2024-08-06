@@ -21,6 +21,10 @@ class Login extends AuthEvent {
   const Login();
 }
 
+class Logout extends AuthEvent {
+  const Logout();
+}
+
 class Back extends AuthEvent {
   const Back();
 }

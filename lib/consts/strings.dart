@@ -16,9 +16,11 @@ class Strings {
   static String name = 'Nome';
   static String email = 'Email';
   static String password = 'Senha';
-  static String confirmPassword = 'Confirmar Senha';
+  static String confirmPassword = 'Confirmar senha';
   static String loading = 'Carregando';
-  static String successfullyRegistered = 'Registrado com Successo';
+  static String successfullyRegistered = 'Registrado com successo';
   static String backToLogin = 'Voltar para tela de login';
-  static String resgiteredError = 'Ocorreu um erro, tente novamente';
+  static String errorTryAgain = 'Ocorreu um erro, tente novamente';
+  static String movies = 'Filmes';
+  static String tryAgain = 'Tentar novamente';
 }
